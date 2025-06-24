@@ -35,7 +35,7 @@ Tools used:
 ### 3. 🐳 Container Management
 - **Portainer** is used to manage all the above stacks via a simple web UI.
 
-![Portainer managed stacks](./assets/stack.png)
+![Portainer managed stacks](./assets/stacks.png)
 
 ![List of containers](./assets/containers.png)
 ---
