@@ -1,0 +1,62 @@
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+
+rule_files:
+  - "alert_rules.yml"
+
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          - alertmanager:9093
+
+scrape_configs:
+  # Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+
+  # Docker Host Node Exporter
+  - job_name: 'docker-host'
+    static_configs:
+      - targets: ['node-exporter:9100']
+    scrape_interval: 30s
+
+  # Docker Containers via cAdvisor
+  - job_name: 'cadvisor'
+    static_configs:
+      - targets: ['cadvisor:8080']
+    scrape_interval: 30s
+
+  # Grafana
+  - job_name: 'grafana'
+    static_configs:
+      - targets: ['grafana:3000']
+
+  # Future K8s Master Node (commented out for now)
+  # - job_name: 'k8s-master-node'
+  #   static_configs:
+  #     - targets: ['192.168.1.100:9100']  # Replace with your K8s master IP
+  #   scrape_interval: 30s
+
+  # Future K8s Worker Nodes (commented out for now)
+  # - job_name: 'k8s-worker-nodes'
+  #   static_configs:
+  #     - targets: 
+  #       - '192.168.1.101:9100'  # Replace with your K8s worker IPs
+  #       - '192.168.1.102:9100'
+  #   scrape_interval: 30s
+
+  # Future K8s API Server (commented out for now)
+  # - job_name: 'k8s-apiserver'
+  #   static_configs:
+  #     - targets: ['192.168.1.100:6443']  # Replace with your K8s API server
+  #   scheme: https
+  #   tls_config:
+  #     insecure_skip_verify: true
+
+  # Future K8s State Metrics (commented out for now)
+  # - job_name: 'kube-state-metrics'
+  #   static_configs:
+  #     - targets: ['192.168.1.100:8080']  # Replace with kube-state-metrics service IP
