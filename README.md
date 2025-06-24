@@ -32,7 +32,7 @@ Tools used:
   - **Datasources** in `grafana/provisioning/datasources`
   - **Dashboards** in `grafana/provisioning/dashboards`
 
-### 3. 🐳 Container Management
+### 3. Container Management
 - **Portainer** is used to manage all the above stacks via a simple web UI.
 
 ![Portainer managed stacks](./assets/stacks.png)
@@ -40,7 +40,7 @@ Tools used:
 ![List of containers](./assets/containers.png)
 ---
 
-## 🧱 Directory Structure
+## Directory Structure
 
 ```bash
 .
